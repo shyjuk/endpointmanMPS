@@ -510,6 +510,7 @@ class Endpointman_Templates
 
 		
 
+//////////////////////
 
 		$i = 0;
 		$b = 0;
@@ -518,11 +519,11 @@ class Endpointman_Templates
 		foreach ($config_files_list as $files) 
 		{
 			
-			foreach ($config_files_og as $filesog) 
 			
-		{
 			
-			if ($namefile != $files)  { continue; }
+			if ($namefile != $files)  { 
+				
+				continue; }
 			
 			$only_configs[$b]['id'] = $b;
 			$only_configs[$b]['id_d'] = $id;
@@ -542,7 +543,6 @@ class Endpointman_Templates
 				foreach ($alt_configs_list as $ccf) 
 				{
 					
-					
 					$cf_key = $files;
 					if ((isset($config_files_saved[$cf_key])) AND (is_array($config_files_saved)) AND ($config_files_saved[$cf_key] == $ccf['id'])) {
 						$alt_configs[$i]['select'] = 'OFF';
@@ -556,12 +556,14 @@ class Endpointman_Templates
 					$alt_configs[$i]['name'] = $ccf['name'];
 					$alt_configs[$i]['original_name'] = $files;
 					
+
+
 					$i++;
 
 					
 				}
+			
 			}
-		}
 		
 	}
 		$dReturn['only_configs'] = $only_configs;
