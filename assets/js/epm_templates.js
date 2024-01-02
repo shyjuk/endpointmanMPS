@@ -113,7 +113,7 @@ function epm_template_update_select_files_config(e) {
 			}
 		});
 		if (data.alt_configs != null) {
-			select.append('<optgroup label="Modifications"></optgroup>');
+			select.append('<optgroup label="Original File Modifications"></optgroup>');
 			var seloptgroup = select.find("optgroup");
 			$.each(data.alt_configs, function (key, val) {
 				if (val['select'] == "ON") {

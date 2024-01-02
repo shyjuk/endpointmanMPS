@@ -485,8 +485,8 @@ class Endpointman_Templates
 		}
 		$row = sql($sql, 'getRow', DB_FETCHMODE_ASSOC);
 		
-		$sqlteste = "SELECT original_name as teste FROM endpointman_custom_configs WHERE product_id = '" . $row['product_id'] . "'";
-		$rowteste = sql($sqlteste, 'getAll', DB_FETCHMODE_ASSOC);
+		$sqlalt = "SELECT original_name as og FROM endpointman_custom_configs WHERE product_id = '" . $row['product_id'] . "'";
+		$rowalt = sql($sqlalt, 'getAll', DB_FETCHMODE_ASSOC);
 
 		
 		if ($row['config_files_override'] == "") {
@@ -498,8 +498,8 @@ class Endpointman_Templates
 
 		$config_files_list = explode(",", $row['config_files']);
 
-		foreach ($rowteste as $linha) {
-			$config_files_list[] = $linha['teste'];
+		foreach ($rowalt as $linha) {
+			$config_files_list[] = $linha['og'];
 		}
 		$config_files_list = array_unique($config_files_list);
 		asort($config_files_list);
@@ -508,7 +508,7 @@ class Endpointman_Templates
 		$config_files_og = array_unique($config_files_og);
 		asort($config_files_og);
 
-		;
+		
 
 
 		$i = 0;
@@ -517,9 +517,11 @@ class Endpointman_Templates
 		$only_configs = array();
 		foreach ($config_files_list as $files) 
 		{
+			
 			foreach ($config_files_og as $filesog) 
+			
 		{
-			if ($namefile == $filesog)  { continue; }
+			
 			if ($namefile != $files)  { continue; }
 			
 			$only_configs[$b]['id'] = $b;
@@ -540,10 +542,11 @@ class Endpointman_Templates
 				foreach ($alt_configs_list as $ccf) 
 				{
 					
+					
 					$cf_key = $files;
 					if ((isset($config_files_saved[$cf_key])) AND (is_array($config_files_saved)) AND ($config_files_saved[$cf_key] == $ccf['id'])) {
-						$alt_configs[$i]['select'] = 'ON';
-						$only_configs[$b]['select'] = "OFF";
+						$alt_configs[$i]['select'] = 'OFF';
+						$only_configs[$b]['select'] = "ON";
 					}
 					else {
 						$alt_configs[$i]['select'] = 'OFF';
@@ -554,6 +557,8 @@ class Endpointman_Templates
 					$alt_configs[$i]['original_name'] = $files;
 					
 					$i++;
+
+					
 				}
 			}
 		}
